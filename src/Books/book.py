@@ -50,7 +50,7 @@ def doctest_author():
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
       ...
-    TypeError: __init__() takes 1 positional argument but 2 were given
+    TypeError: BaseModel.__init__() takes 1 positional argument but 2 were given
     >>> Author(name="Bob")
     Author(name='Bob')
     >>> external_data = {"name": ""}
