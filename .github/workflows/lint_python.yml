@@ -18,5 +18,5 @@ jobs:
       - run: mkdir --parents --verbose .mypy_cache
       - run: mypy --ignore-missing-imports --install-types --non-interactive .
       - run: pytest --doctest-modules .
-      - run: shopt -s globstar && pyupgrade --py38-plus **/*.py
+      - run: shopt -s globstar && pyupgrade --py38-plus **/*.py || true
       - run: safety check
