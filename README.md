@@ -1,1 +1,3 @@
-# pydantic-books-example
+# Pydantic books example
+
+https://pydantic-docs.helpmanual.io
