@@ -107,4 +107,3 @@ def doctest_book():
     ... )
     Book(title='', source_records=[SourceRecord(record='record')], authors=[Author(name='Bob')], publishers=[Publisher(name="Bob's Publishing")], publish_date=None, author='', publisher='')
     """
-
