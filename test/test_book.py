@@ -5,7 +5,7 @@ import pytest
 # from openlibrary.plugins.importapi.import_validator import (import_validator,
 #                                                            RequiredFieldError)
 
-from import_validator import Author, Book, Publisher, SourceRecord
+from Books.book import Author, Book, Publisher, SourceRecord
 
 # from import_validator import import_validator, RequiredFieldError
 
