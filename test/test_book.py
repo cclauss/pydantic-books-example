@@ -2,18 +2,19 @@ import pydantic
 import pytest
 
 
-#from openlibrary.plugins.importapi.import_validator import (import_validator,
+# from openlibrary.plugins.importapi.import_validator import (import_validator,
 #                                                            RequiredFieldError)
 
-from Books.book import Author, Book, Publisher, SourceRecord
+from import_validator import Author, Book, Publisher, SourceRecord
+
 # from import_validator import import_validator, RequiredFieldError
 
-#from __future__ import annotations
+# from __future__ import annotations
 
-#from datetime import datetime
-#from typing import Any, Optional
+# from datetime import datetime
+# from typing import Any, Optional
 
-#from pydantic import BaseModel, validator
+# from pydantic import BaseModel, validator
 
 
 def test_author_no_parameters():
@@ -50,15 +51,16 @@ def test_author_to_json():
 
 # Book tests
 
-valid_book = Book(title = "",
-         source_records = [SourceRecord(record="record")],
-         authors = [Author(name="Bob")],
-         publishers = [Publisher(name="Bob's Publishing")],
-         publish_date = None,
-         author = "",
-         publisher = "",
-     )
- 
+valid_book = Book(
+    title="",
+    source_records=[SourceRecord(record="record")],
+    authors=[Author(name="Bob")],
+    publishers=[Publisher(name="Bob's Publishing")],
+    publish_date=None,
+    author="",
+    publisher="",
+)
+
 
 def test_book_title():
     assert isinstance(valid_book, Book)
@@ -68,38 +70,37 @@ def test_book_title():
 def test_book_with_no_author():
     with pytest.raises(pydantic.error_wrappers.ValidationError):
         Book(
-            title = valid_book.title,
-            source_records = valid_book.source_records,
-            authors = [],
-            publishers = valid_book.publishers,
-            publish_date = valid_book.publish_date,
+            title=valid_book.title,
+            source_records=valid_book.source_records,
+            authors=[],
+            publishers=valid_book.publishers,
+            publish_date=valid_book.publish_date,
             # author = valid_book.author,  # <--
-            publisher = valid_book.publisher,
+            publisher=valid_book.publisher,
         )
 
 
 def test_book_with_no_source_records():
     with pytest.raises(pydantic.error_wrappers.ValidationError):
         Book(
-            title = valid_book.title,
-            source_records = [],  # <--
-            authors = valid_book.authors,
-            publishers = valid_book.publishers,
-            publish_date = valid_book.publish_date,
-            author = valid_book.author,
-            publisher = valid_book.publisher,
+            title=valid_book.title,
+            source_records=[],  # <--
+            authors=valid_book.authors,
+            publishers=valid_book.publishers,
+            publish_date=valid_book.publish_date,
+            author=valid_book.author,
+            publisher=valid_book.publisher,
         )
- 
+
 
 def test_book_with_authors_instead_of_source_records():
     with pytest.raises(pydantic.error_wrappers.ValidationError):
         Book(
-            title = valid_book.title,
-            source_records = valid_book.authors,  # <--
-            authors = valid_book.authors,
-            publishers = valid_book.publishers,
-            publish_date = valid_book.publish_date,
-            author = valid_book.author,
-            publisher = valid_book.publisher,
+            title=valid_book.title,
+            source_records=valid_book.authors,  # <--
+            authors=valid_book.authors,
+            publishers=valid_book.publishers,
+            publish_date=valid_book.publish_date,
+            author=valid_book.author,
+            publisher=valid_book.publisher,
         )
-
