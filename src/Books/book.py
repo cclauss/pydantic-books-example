@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date
 from typing import Optional
 
 from pydantic import BaseModel, validator
@@ -41,7 +41,7 @@ class Book(BaseModel):
     source_records: list[SourceRecord]
     authors: list[Author]
     publishers: list[Publisher]
-    publish_date: Optional[datetime]
+    publish_date: Optional[date]
     author: str
     publisher: str
 
@@ -128,4 +128,30 @@ def doctest_book():
     ...     publisher = "",
     ... )
     Book(title='', source_records=[SourceRecord(record='record')], authors=[Author(name='Bob')], publishers=[Publisher(name="Bob's Publishing")], publish_date=None, author='', publisher='')
+    """
+
+
+def doctest_dates():
+    """
+    https://pydantic-docs.helpmanual.io/usage/types/#datetime-types
+
+    >>> class DateHack(BaseModel):
+    ...     publish_date: date
+    ...
+    >>> DateHack(publish_date="2020-01-01")
+    DateHack(publish_date=datetime.date(2020, 1, 1))
+    >>> DateHack(publish_date=1577833200)
+    DateHack(publish_date=datetime.date(2019, 12, 31))
+    >>> DateHack(publish_date="1/1/2020")
+    Traceback (most recent call last):
+      ...
+    pydantic.error_wrappers.ValidationError: 1 validation error for DateHack
+    publish_date
+      invalid date format (type=value_error.date)
+    >>> DateHack(publish_date="January, 2020")
+    Traceback (most recent call last):
+      ...
+    pydantic.error_wrappers.ValidationError: 1 validation error for DateHack
+    publish_date
+      invalid date format (type=value_error.date)
     """

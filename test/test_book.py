@@ -111,3 +111,31 @@ def test_book_json_title():
     book = Book(**json_loads(valid_book_json))
     assert isinstance(book, Book)
     assert book.title == "json"
+
+
+invalid_book_json = """{"title": "json",
+    "source_records": [{"record": "record"}],
+    "authors": [{"name": ""}],
+    "publishers": [{"name": "Bob\'s Publishing"}],
+    "publish_date": null,
+    "author": "",
+    "publisher": ""}"""
+
+
+def test_book_json_invalid_author_has_no_name():
+    with pytest.raises(pydantic.error_wrappers.ValidationError):
+        Book(**json_loads(invalid_book_json))
+
+
+invalid_book_json = """{"title": "json",
+    "source_records": [{"record": "record"}],
+    "authors": [{"name": "Bob"}, {"something else": "Bob"}],
+    "publishers": [{"name": "Bob\'s Publishing"}],
+    "publish_date": null,
+    "author": "",
+    "publisher": ""}"""
+
+
+def test_book_json_invalid_second_author():
+    with pytest.raises(pydantic.error_wrappers.ValidationError):
+        Book(**json_loads(invalid_book_json))
