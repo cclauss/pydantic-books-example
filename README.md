@@ -8,13 +8,13 @@ I am impressed with the detailed exceptions Pydantic raises which pinpoint where
 [`test/test_book.py`](../../tree/main/test/test_book.py) defines Python unittests to prove how the those classes are validated by Pydantic. Both the doctests and unittests can be run with:
 % `pytest --doctest-modules .`
 ```
-============================= test session starts ==============================
-platform linux -- Python 3.10.0, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
-rootdir: /home/runner/work/pydantic-books-example/pydantic-books-example
-collected 12 items
+================================== test session starts ==================================
+platform darwin -- Python 3.9.7, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: /Users/cclauss/Python/import_validator/pydantic-books-example
+collected 16 items
 
-src/Books/book.py ..                                                     [ 16%]
-test/test_book.py ..........                                             [100%]
+src/Books/book.py ...                                                             [ 18%]
+test/test_book.py .............                                                   [100%]
 
-============================== 12 passed in 0.29s ==============================
+================================== 16 passed in 0.04s ===================================
 ```
