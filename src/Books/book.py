@@ -9,13 +9,31 @@ from pydantic import BaseModel, validator
 class Author(BaseModel):
     name: str
 
+    @validator("name")
+    def name_must_not_be_an_empty_string(cls, v):
+        if not v:
+            raise ValueError("name must not be an empty string")
+        return v
+
 
 class Publisher(BaseModel):
     name: str
 
+    @validator("name")
+    def name_must_not_be_an_empty_string(cls, v):
+        if not v:
+            raise ValueError("name must not be an empty string")
+        return v
+
 
 class SourceRecord(BaseModel):
     record: str
+
+    @validator("name")
+    def record_must_not_be_an_empty_string(cls, v):
+        if not v:
+            raise ValueError("record must not be an empty string")
+        return v
 
 
 class Book(BaseModel):
