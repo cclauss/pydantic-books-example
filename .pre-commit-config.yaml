@@ -44,15 +44,3 @@ repos:
         # have access to those. To change the arguments, override the
         # args as follows:
         # args: [--no-strict-optional, --ignore-missing-imports]
-  - repo: https://github.com/pytest-dev/pytest
-    rev: 6.2.5
-    hooks:
-      - id: pytest
-        args:
-          - --doctest-modules
-#  - repo: https://github.com/asottile/pyupgrade
-#    rev: v2.29.0
-#    hooks:
-#      - id: pyupgrade
-#        args:
-#          - --py37-plus
