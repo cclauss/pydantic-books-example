@@ -27,10 +27,10 @@ class Book(BaseModel):
     author: str
     publisher: str
 
-    @validator('source_records', 'authors', 'publishers')
+    @validator("source_records", "authors", "publishers")
     def list_must_not_be_empty(cls, v):
         if not v:
-            raise ValueError('list must not be empty')
+            raise ValueError("list must not be empty")
         return v
 
 
