@@ -11,15 +11,14 @@ def test_author_no_parameters():
         Author()  # Must provide a `name` parameter
 
 
-def test_author_name_equals_empty_str():
-    author = Author(name="")  # Empty string is allowed (for now)
-    assert isinstance(author, Author)
-    assert author.name == ""
-
-
 def test_author_without_name_key():
     with pytest.raises(TypeError):
-        Author("")  # `name =` is NOT optional
+        Author("Bob")  # `name =` is NOT optional
+
+
+def test_author_name_equals_empty_str():
+    with pytest.raises(pydantic.error_wrappers.ValidationError):
+        Author(name="")  # @validator() ensures that an empty string is not allowed
 
 
 def test_author_name_is_correct():

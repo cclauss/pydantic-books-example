@@ -10,7 +10,7 @@ class Author(BaseModel):
     name: str
 
     @validator("name")
-    def name_must_not_be_an_empty_string(cls, v):
+    def author_name_must_not_be_an_empty_string(cls, v):
         if not v:
             raise ValueError("name must not be an empty string")
         return v
@@ -20,7 +20,7 @@ class Publisher(BaseModel):
     name: str
 
     @validator("name")
-    def name_must_not_be_an_empty_string(cls, v):
+    def publisher_name_must_not_be_an_empty_string(cls, v):
         if not v:
             raise ValueError("name must not be an empty string")
         return v
@@ -29,7 +29,7 @@ class Publisher(BaseModel):
 class SourceRecord(BaseModel):
     record: str
 
-    @validator("name")
+    @validator("record")
     def record_must_not_be_an_empty_string(cls, v):
         if not v:
             raise ValueError("record must not be an empty string")
@@ -63,20 +63,24 @@ def doctest_author():
     pydantic.error_wrappers.ValidationError: 1 validation error for Author
     name
       field required (type=value_error.missing)
-    >>> Author(name="")  # Empty string is allowed (for now)
-    Author(name='')
+    >>> Author(name="")  # @validator() ensures that an empty string is not allowed
+    Traceback (most recent call last):
+      ...
+    pydantic.error_wrappers.ValidationError: 1 validation error for Author
+    name
+      name must not be an empty string (type=value_error)
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
       ...
-    TypeError: BaseModel.__init__() takes 1 positional argument but 2 were given
+    TypeError: ...__init__() takes 1 positional argument but 2 were given
     >>> Author(name="Bob")
     Author(name='Bob')
-    >>> external_data = {"name": ""}
-    >>> no_name = Author(**external_data)  # Create an Author from a dict
-    >>> no_name
-    Author(name='')
-    >>> no_name.json()  # Pydantic has json.dumps() is builtin
-    '{"name": ""}'
+    >>> external_data = {"name": "From Dict"}
+    >>> from_dict = Author(**external_data)  # Create an Author from a dict
+    >>> from_dict
+    Author(name='From Dict')
+    >>> from_dict.json()  # Pydantic has json.dumps() is builtin
+    '{"name": "From Dict"}'
     """
 
 
