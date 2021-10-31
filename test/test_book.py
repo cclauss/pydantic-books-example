@@ -1,4 +1,4 @@
-from json import dumps as json_dumps
+from json import loads as json_loads
 
 import pydantic
 import pytest
@@ -104,10 +104,10 @@ valid_book_json = """{"title": "json",
     "publishers": [{"name": "Bob\'s Publishing"}],
     "publish_date": null,
     "author": "",
-    "publisher": ""}'"""
+    "publisher": ""}"""
 
 
 def test_book_json_title():
-    book = Book(**json_dumps(valid_book_json))
+    book = Book(**json_loads(valid_book_json))
     assert isinstance(book, Book)
     assert book.title == "json"
