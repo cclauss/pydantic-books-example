@@ -3,17 +3,7 @@ import pytest
 
 from Books.book import Author, Book, Publisher, SourceRecord
 
-# from openlibrary.plugins.importapi.import_validator import (import_validator,
-#                                                            RequiredFieldError)
-
-# from import_validator import import_validator, RequiredFieldError
-
-# from __future__ import annotations
-
-# from datetime import datetime
-# from typing import Any, Optional
-
-# from pydantic import BaseModel, validator
+# Author tests
 
 
 def test_author_no_parameters():
@@ -103,3 +93,6 @@ def test_book_with_authors_instead_of_source_records():
             author=valid_book.author,
             publisher=valid_book.publisher,
         )
+
+
+# Json tests
