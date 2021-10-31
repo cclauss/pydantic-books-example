@@ -3,7 +3,7 @@
 
 This repo contains my experiments with [Pydantic](https://pydantic-docs.helpmanual.io) data validation.  [`src/Books/book.py`](../../tree/main/src/Books/book.py) defines four classes: Author, Book, Publisher, SourceRecord followed by some Python doctests to show how those classes are validated by Pydantic.  Data validation is mostly handled via Pydantic's verifying type hint compliance and type conversion at runtime.
 
-I am impressed with the detailed exceptions Pydantic raises which pinpoint where the bad data is even in nested data structures.  The code also demonstrates the use of `@validator` functions to ensure that lists or strings are not empty, etc.
+I am impressed with the detailed exceptions Pydantic raises which pinpoint where the bad data is even in nested data structures.  The code also demonstrates the use of `@validator` functions to ensure that lists or strings are not empty, etc.  For dates, it could also be interesting to wire an `@validator` function to [one of the datetime for humans](https://github.com/kennethreitz/maya#-what-about-delorean-arrow--pendulum) libraries to coerce strings like "October 2021" to an actual datetimes.
 
 [`test/test_book.py`](../../tree/main/test/test_book.py) defines Python unittests to prove how the those classes are validated by Pydantic. Both the doctests and unittests can be run with:
 % `pytest --doctest-modules .`
