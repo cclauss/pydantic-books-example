@@ -1,3 +1,5 @@
+from json import dumps as json_dumps
+
 import pydantic
 import pytest
 
@@ -95,3 +97,17 @@ def test_book_with_authors_instead_of_source_records():
 
 
 # Json tests
+
+valid_book_json = """{"title": "json",
+    "source_records": [{"record": "record"}],
+    "authors": [{"name": "Bob"}],
+    "publishers": [{"name": "Bob\'s Publishing"}],
+    "publish_date": null,
+    "author": "",
+    "publisher": ""}'"""
+
+
+def test_book_json_title():
+    book = Book(**json_dumps(valid_book_json))
+    assert isinstance(book, Book)
+    assert book.title == "json"
