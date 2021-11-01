@@ -27,7 +27,7 @@ class Book(BaseModel):
 ```
 Given `Book(requests.get(url).json())` please provide easy to understand error messages that:
 1. The `title` is an empty string.
-2. The `publisher` is missing.
+2. The `publishers` list is empty.
 3. The third `SourceRecord` does not contain the required `record` field.
 4. The fourth `Author` has a `name` that is an empty string.
 
