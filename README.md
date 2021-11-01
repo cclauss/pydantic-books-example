@@ -3,6 +3,28 @@
 
 This repo contains my experiments with [Pydantic](https://pydantic-docs.helpmanual.io) data validation.  [`src/Books/book.py`](../../tree/main/src/Books/book.py) defines four classes: Author, Book, Publisher, SourceRecord followed by some Python doctests to show how those classes are validated by Pydantic.  Data validation is mostly handled via Pydantic's verifying type hint compliance and type conversion at runtime.
 
+```python
+from datetime import date
+from typing import Optional
+
+from pydantic import BaseModel, validator
+
+
+class Book(BaseModel):
+    title: str
+    source_records: list[SourceRecord]
+    authors: list[Author]
+    publishers: list[Publisher]
+    publish_date: Optional[date]
+    author: str
+    publisher: str
+
+    @validator("source_records", "authors", "publishers")
+    def list_must_not_be_empty(cls, v):
+        if not v:
+            raise ValueError("list must not be empty")
+        return v
+```
 Given `Book(requests.get(url).json())` please provide easy to understand error messages that:
 1. The `title` is an empty string.
 2. The `publisher` is missing.
