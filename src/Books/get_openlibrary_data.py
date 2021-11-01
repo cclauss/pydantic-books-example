@@ -3,7 +3,7 @@ Get book and author data from https://openlibrary.org
 
 ISBN: https://en.wikipedia.org/wiki/International_Standard_Book_Number
 """
-import json
+# import json
 
 import requests
 
@@ -26,13 +26,13 @@ def get_openlibrary_data(olid: str) -> dict:
     # NOTE: json.JSONDecodeError may be raised if the record cannot be found.
     return requests.get(f"https://openlibrary.org/{new_olid}.json").json()
 
-  
-def build_data_class(data, depth = 1, sort_keys = True) -> None:
+
+def build_data_class(data, depth=1, sort_keys=True) -> None:
     """
     Semi-automate the process of building data classes from json data.
     See docstring at the bottom of the file for output.
     """
-    indent = ' ' * depth * 4
+    indent = " " * depth * 4
     if sort_keys:
         data = {k: v for k, v in sorted(data.items())}  # sort keys in alphabetic order
     for key, value in data.items():
