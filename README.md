@@ -31,7 +31,7 @@ Given `Book(requests.get(url).json())` please provide easy to understand error m
 3. The third `SourceRecord` does not contain the required `record` field.
 4. The fourth `Author` has a `name` that is an empty string.
 
-Just by providing the four data classes mentioned above, Pydantic can quickly find all of those problems and deliver detailed end-user-ready error messages.
+Just by providing the data classes mentioned above, Pydantic can quickly find all of those problems and deliver detailed end-user-ready error messages.
 
 I am impressed with the detailed exceptions Pydantic raises which pinpoint where the bad data is even in nested data structures.  The code also demonstrates the use of `@validator` functions to ensure that lists or strings are not empty, etc.  For dates, it could also be interesting to wire an `@validator` function to [one of the datetime for humans](https://github.com/kennethreitz/maya#-what-about-delorean-arrow--pendulum) libraries to coerce strings like "October 2021" to an actual datetimes.
 
