@@ -33,7 +33,7 @@ Given `Book(requests.get(url).json())` please provide easy to understand error m
 
 Just by providing the data classes mentioned above, Pydantic can quickly find all of those problems and deliver detailed end-user-ready error messages.
 
-I am impressed with the detailed exceptions Pydantic raises which pinpoint where the bad data is even in nested data structures.  The code also demonstrates the use of `@validator` functions to ensure that lists or strings are not empty, etc.  For dates, it could also be interesting to wire an `@validator` function to [one of the datetime for humans libraries](https://github.com/kennethreitz/maya#-what-about-delorean-arrow--pendulum) to coerce strings like "October 2021" into valid datetimes.
+I am impressed with the detailed exceptions Pydantic raises which pinpoint where bad data is even in nested data structures.  The code also demonstrates the use of `@validator` functions to ensure that lists or strings are not empty, etc.  For dates, it could also be interesting to wire an `@validator` function to [one of the datetime for humans libraries](https://github.com/kennethreitz/maya#-what-about-delorean-arrow--pendulum) to coerce strings like "October 2021" into valid datetimes.
 
 [`test/test_book.py`](../../tree/main/test/test_book.py) defines Python unittests to prove how the those classes are validated by Pydantic. Both the doctests and unittests can be run with:
 `pytest --doctest-modules .`
