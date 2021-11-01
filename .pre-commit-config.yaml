@@ -13,16 +13,16 @@ repos:
           - --recursive
           - --skip=B101
           - .
-  - repo: https://github.com/python/black
-    rev: 21.9b0
+  - repo: https://github.com/psf/black
+    rev: 21.10b0
     hooks:
       - id: black
   - repo: https://github.com/codespell-project/codespell
     rev: v2.1.0
     hooks:
       - id: codespell
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.2
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
     hooks:
       - id: flake8
         args:
@@ -35,7 +35,7 @@ repos:
           - flake8-bugbear
           - flake8-comprehensions
           - flake8-return
-  - repo: https://github.com/timothycrosley/isort
+  - repo: https://github.com/PyCQA/isort
     rev: 5.9.3
     hooks:
       - id: isort
