@@ -1,7 +1,7 @@
 # Pydantic books example
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/cclauss/pydantic-books-example/main.svg)](https://results.pre-commit.ci/latest/github/cclauss/pydantic-books-example/main)
 
-This repo contains my experiments with [Pydantic](https://pydantic-docs.helpmanual.io) data validation.  [`src/Books/book.py`](../../tree/main/src/Books/book.py) defines four classes: `Author`, `Book`, `Publisher`, `SourceRecord` followed by some Python doctests to show how those classes are validated by Pydantic.  This data validation is mostly handled via Pydantic's verifying type hint compliance and type conversion at runtime.
+This repo contains my experiments with [Pydantic](https://pydantic-docs.helpmanual.io) data validation.  [`src/Books/book.py`](../../tree/main/src/Books/book.py) defines four classes: `Author`, `Book`, `Publisher`, `SourceRecord` followed by some Python doctests to show how those classes are validated by Pydantic.  This data validation is mostly handled via Pydantic's verifying type hint compliance at runtime and type conversion where needed.
 
 ```python
 from datetime import date
