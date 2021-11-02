@@ -29,6 +29,7 @@ def get_openlibrary_data(olid: str) -> dict:
 
 def build_data_class(data, depth=1, sort_keys=True) -> None:
     """
+    A very poor man's version of https://pypi.org/project/datamodel-code-generator
     Semi-automate the process of building data classes from json data.
     See docstring at the bottom of the file for output.
     """
