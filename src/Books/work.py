@@ -59,8 +59,10 @@ def get_openlibrary_data(olid: str) -> dict:
     new_olid = olid.strip().strip("/")  # Remove leading/trailing whitespace & slashes
     if new_olid.count("/") != 1:
         raise ValueError(f"{olid} is not a valid Open Library olid")
+    url = f"https://openlibrary.org/{new_olid}.json"
+    print(f"Gathering data from {url}."
     # NOTE: json.JSONDecodeError may be raised if the record cannot be found.
-    return requests.get(f"https://openlibrary.org/{new_olid}.json").json()
+    return requests.get(url).json()
 
 
 if __name__ == "__main__":  # https://openlibrary.org/works/OL19545135W.json
