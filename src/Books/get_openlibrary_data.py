@@ -37,7 +37,7 @@ def build_data_class(data, depth=1, sort_keys=True) -> None:
     if sort_keys:
         data = {k: v for k, v in sorted(data.items())}  # sort keys in alphabetic order
     for key, value in data.items():
-        if key == "type":
+        if key == "type":  # https://github.com/koxudaxi/datamodel-code-generator#600
             key = "type_"
         s = f"{indent}{key}: {type(value).__name__}"  # ocaid: str
         if value and isinstance(value, list):
