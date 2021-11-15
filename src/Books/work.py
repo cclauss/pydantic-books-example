@@ -60,7 +60,7 @@ def get_openlibrary_data(olid: str) -> dict:
     if new_olid.count("/") != 1:
         raise ValueError(f"{olid} is not a valid Open Library olid")
     url = f"https://openlibrary.org/{new_olid}.json"
-    print(f"Gathering data from {url}."
+    print(f"Gathering data from {url}.")
     # NOTE: json.JSONDecodeError may be raised if the record cannot be found.
     return requests.get(url).json()
 
