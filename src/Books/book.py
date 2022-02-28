@@ -61,7 +61,7 @@ def doctest_author():
     Traceback (most recent call last):
       ...
     pydantic.error_wrappers.ValidationError: 1 validation error for Author
-    ...
+    TypeError: __init__() takes exactly 1 positional argument (2 given)
     >>> Author(name="")  # @validator() ensures that an empty string is not allowed
     Traceback (most recent call last):
       ...
@@ -71,7 +71,7 @@ def doctest_author():
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
       ...
-    TypeError: ...__init__() takes 1 positional argument but 2 were given
+    TypeError: __init__() takes exactly 1 positional argument (2 given)
     >>> Author(name="Bob")
     Author(name='Bob')
     >>> external_data = {"name": "From Dict"}
