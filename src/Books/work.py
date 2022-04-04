@@ -44,7 +44,7 @@ class Work(BaseModel):
     works: list[OlId]
 
 
-def get_openlibrary_data(olid: str) -> dict[]:
+def get_openlibrary_data(olid: str) -> dict:
     """
     Given an 'isbn/0140328726', return book data from Open Library as a Python dict.
     Given an '/authors/OL34184A', return authors data as a Python dict.
