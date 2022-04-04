@@ -44,7 +44,7 @@ class Work(BaseModel):
     works: list[OlId]
 
 
-def get_openlibrary_data(olid: str) -> dict:
+def get_openlibrary_data(olid: str) -> dict[]:
     """
     Given an 'isbn/0140328726', return book data from Open Library as a Python dict.
     Given an '/authors/OL34184A', return authors data as a Python dict.
@@ -72,12 +72,12 @@ if __name__ == "__main__":  # https://openlibrary.org/works/OL19545135W.json
 
     print(f"\nLazy loading {len(work.authors)} authors...\n")
     for i, author_olid in enumerate(work.authors):
-        work.authors[i] = get_openlibrary_data(author_olid.key)
+        work.authors[i] = get_openlibrary_data(author_olid.key)  # type: ignore
     print(work)
 
     print(f"\nLazy loading {len(work.languages)} languages...\n")
     for i, language_olid in enumerate(work.languages):
-        work.languages[i] = get_openlibrary_data(language_olid.key)
+        work.languages[i] = get_openlibrary_data(language_olid.key)  # type: ignore
     print(work)
 
     # If is a bad idea to shadow a Python builtin like `type`
