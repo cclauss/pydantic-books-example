@@ -36,7 +36,7 @@ repos:
           - flake8-comprehensions
           - flake8-return
   - repo: https://github.com/PyCQA/isort
-    rev: 5.11.1
+    rev: v5.11.3
     hooks:
       - id: isort
         args:
