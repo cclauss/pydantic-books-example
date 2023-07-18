@@ -24,7 +24,7 @@ def get_openlibrary_data(olid: str) -> dict:
     if new_olid.count("/") != 1:
         raise ValueError(f"{olid} is not a valid Open Library olid")
     # NOTE: json.JSONDecodeError may be raised if the record cannot be found.
-    return requests.get(f"https://openlibrary.org/{new_olid}.json").json()
+    return requests.get(f"https://openlibrary.org/{new_olid}.json", timeout=10).json()
 
 
 def build_data_class(data, depth=1, sort_keys=True) -> None:
