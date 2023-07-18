@@ -62,7 +62,7 @@ def get_openlibrary_data(olid: str) -> dict:
     url = f"https://openlibrary.org/{new_olid}.json"
     print(f"Gathering data from {url}.")
     # NOTE: json.JSONDecodeError may be raised if the record cannot be found.
-    return requests.get(url).json()
+    return requests.get(url, timeout=10).json()
 
 
 if __name__ == "__main__":  # https://openlibrary.org/works/OL19545135W.json
