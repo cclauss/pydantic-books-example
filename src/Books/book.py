@@ -78,7 +78,9 @@ def doctest_author():
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
       ...
-    TypeError: __init__() takes exactly 1 positional argument (2 given)
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for Author
+    name
+      Value error, name must not be an empty string [type=value_error, input_value=''...
     >>> Author(name="Bob")
     Author(name='Bob')
     >>> external_data = {"name": "From Dict"}
