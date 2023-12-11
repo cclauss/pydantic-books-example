@@ -64,9 +64,10 @@ def doctest_author():
     >>> Author()  # Must provide a `name` parameter
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 1 validation error for Author
-    name
-      field required (type=value_error.missing)
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for Author name
+      Field required [type=missing, input_value={}, input_type=dict]
+        For further information visit https://errors.pydantic.dev/2.5/v/missing
+
     >>> Author(name="")  # @validator() ensures that an empty string is not allowed
     Traceback (most recent call last):
       ...
