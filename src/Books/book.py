@@ -75,7 +75,7 @@ def doctest_author():
     pydantic.error_wrappers.ValidationError: 1 validation error for Author
     name
       name must not be an empty string (type=value_error)
-    
+
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
       ...
