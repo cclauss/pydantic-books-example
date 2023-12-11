@@ -74,7 +74,7 @@ def doctest_author():
       ...
     pydantic_core._pydantic_core.ValidationError: 1 validation error for Author
     name
-      name must not be an empty string (type=value_error)
+      Value error, name must not be an empty string [type=value_error, input_value=''...
 
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
@@ -109,11 +109,11 @@ def doctest_book():
       ...
     pydantic_core._pydantic_core.ValidationError: 3 validation errors for Book
     source_records
-      list must not be empty (type=value_error)
+      Value error, list must not be empty [type=value_error, input_value=[], ...
     authors
-      list must not be empty (type=value_error)
+      Value error, list must not be empty [type=value_error, input_value=[], ...
     publishers
-      list must not be empty (type=value_error)
+      Value error, list must not be empty [type=value_error, input_value=[], ...
     >>> Book(
     ...     title = "",
     ...     source_records = [Author(name="Bob")],
