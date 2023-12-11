@@ -72,7 +72,7 @@ def doctest_author():
     >>> Author(name="")  # @validator() ensures that an empty string is not allowed
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 1 validation error for Author
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for Author
     name
       name must not be an empty string (type=value_error)
 
@@ -82,6 +82,7 @@ def doctest_author():
     pydantic_core._pydantic_core.ValidationError: 1 validation error for Author
     name
       Value error, name must not be an empty string [type=value_error, input_value=''...
+
     >>> Author(name="Bob")
     Author(name='Bob')
     >>> external_data = {"name": "From Dict"}
@@ -106,7 +107,7 @@ def doctest_book():
     ... )
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 3 validation errors for Book
+    pydantic_core._pydantic_core.ValidationError: 3 validation errors for Book
     source_records
       list must not be empty (type=value_error)
     authors
@@ -124,7 +125,7 @@ def doctest_book():
     ... )
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 1 validation error for Book
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for Book
     source_records -> 0 -> record
       field required (type=value_error.missing)
     >>> Book(
@@ -154,13 +155,13 @@ def doctest_dates():
     >>> DateHack(publish_date="1/1/2020")
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 1 validation error for DateHack
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for DateHack
     publish_date
       invalid date format (type=value_error.date)
     >>> DateHack(publish_date="January, 2020")
     Traceback (most recent call last):
       ...
-    pydantic.error_wrappers.ValidationError: 1 validation error for DateHack
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for DateHack
     publish_date
       invalid date format (type=value_error.date)
     """
