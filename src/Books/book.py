@@ -72,6 +72,7 @@ def doctest_author():
     Traceback (most recent call last):
       ...
     pydantic_core._pydantic_core.ValidationError: 1 validation error for Author
+    name
       ...
     >>> Author("")  # `name =` is NOT optional
     Traceback (most recent call last):
@@ -101,6 +102,11 @@ def doctest_book():
     Traceback (most recent call last):
       ...
     pydantic_core._pydantic_core.ValidationError: 3 validation errors for Book
+    source_records
+      ...
+    authors
+      ...
+    publishers
       ...
     >>> Book(
     ...     title = "",
