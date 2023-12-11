@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date
 from typing import Optional
 
-from pydantic import field_validator, BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class Author(BaseModel):

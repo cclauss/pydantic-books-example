@@ -36,7 +36,9 @@ def test_author_from_dict():
 
 
 def test_author_to_json():
-    assert Author(name="Json Is Builtin").model_dump_json() == '{"name":"Json Is Builtin"}'
+    assert (
+        Author(name="Json Is Builtin").model_dump_json() == '{"name":"Json Is Builtin"}'
+    )
 
 
 # Book tests
