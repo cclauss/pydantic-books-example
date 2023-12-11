@@ -9,7 +9,7 @@ from Books.book import Author, Book, Publisher, SourceRecord
 
 
 def test_author_no_parameters():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Author()  # Must provide a `name` parameter
 
 
@@ -19,7 +19,7 @@ def test_author_without_name_key():
 
 
 def test_author_name_equals_empty_str():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Author(name="")  # @validator() ensures that an empty string is not allowed
 
 
@@ -36,7 +36,9 @@ def test_author_from_dict():
 
 
 def test_author_to_json():
-    assert Author(name="Json Is Builtin").json() == '{"name": "Json Is Builtin"}'
+    assert (
+        Author(name="Json Is Builtin").model_dump_json() == '{"name":"Json Is Builtin"}'
+    )
 
 
 # Book tests
@@ -58,7 +60,7 @@ def test_book_title():
 
 
 def test_book_with_no_author():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Book(
             title=valid_book.title,
             source_records=valid_book.source_records,
@@ -71,7 +73,7 @@ def test_book_with_no_author():
 
 
 def test_book_with_no_source_records():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Book(
             title=valid_book.title,
             source_records=[],  # <--
@@ -84,7 +86,7 @@ def test_book_with_no_source_records():
 
 
 def test_book_with_authors_instead_of_source_records():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Book(
             title=valid_book.title,
             source_records=valid_book.authors,  # <--
@@ -123,7 +125,7 @@ invalid_book_json = """{"title": "json",
 
 
 def test_book_json_invalid_author_has_no_name():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Book(**json_loads(invalid_book_json))
 
 
@@ -137,5 +139,5 @@ invalid_book_json = """{"title": "json",
 
 
 def test_book_json_invalid_second_author():
-    with pytest.raises(pydantic.error_wrappers.ValidationError):
+    with pytest.raises(pydantic.ValidationError):
         Book(**json_loads(invalid_book_json))
