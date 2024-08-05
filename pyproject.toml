@@ -1,0 +1,172 @@
+[tool.ruff]
+target-version = "py39"
+
+lint.select = [
+  "AIR",    # Airflow
+  "ASYNC",  # flake8-async
+  "B",      # flake8-bugbear
+  "BLE",    # flake8-blind-except
+  "C4",     # flake8-comprehensions
+  "C90",    # McCabe cyclomatic complexity
+  "DJ",     # flake8-django
+  "E",      # pycodestyle errors
+  "EM",     # flake8-errmsg
+  "EXE",    # flake8-executable
+  "F",      # Pyflakes
+  "FA",     # flake8-future-annotations
+  "FIX",    # flake8-fixme
+  "FLY",    # flynt
+  "G",      # flake8-logging-format
+  "ICN",    # flake8-import-conventions
+  "INT",    # flake8-gettext
+  "ISC",    # flake8-implicit-str-concat
+  "LOG",    # flake8-logging
+  "N",      # pep8-naming
+  "NPY",    # NumPy-specific rules
+  "PD",     # pandas-vet
+  "PERF",   # Perflint
+  "PGH",    # pygrep-hooks
+  "PIE",    # flake8-pie
+  "PL",     # Pylint
+  "PT",     # flake8-pytest-style
+  "PYI",    # flake8-pyi
+  "Q",      # flake8-quotes
+  "RET",    # flake8-return
+  "RSE",    # flake8-raise
+  "RUF",    # Ruff-specific rules
+  "S",      # flake8-bandit
+  "SIM",    # flake8-simplify
+  "SLOT",   # flake8-slots
+  "T10",    # flake8-debugger
+  "TD",     # flake8-todos
+  "TID",    # flake8-tidy-imports
+  "TRY",    # tryceratops
+  "UP",     # pyupgrade
+  "W",      # pycodestyle warnings
+  "YTT",    # flake8-2020
+  # "A",    # flake8-builtins
+  # "ANN",  # flake8-annotations
+  # "ARG",  # flake8-unused-arguments
+  # "COM",  # flake8-commas
+  # "CPY",  # Copyright-related rules
+  # "D",    # pydocstyle
+  # "DTZ",  # flake8-datetimez
+  # "ERA",  # eradicate
+  # "FBT",  # flake8-boolean-trap
+  # "FURB", # refurb
+  # "I",    # isort
+  # "INP",  # flake8-no-pep420
+  # "PTH",  # flake8-use-pathlib
+  # "SLF",  # flake8-self
+  # "T20",  # flake8-print
+  # "TCH",  # flake8-type-checking
+]
+lint.extend-ignore = [
+  "EM101",  # Exception must not use a string literal, assign to variable first
+  "EM102",
+  "N999",   # Invalid module name: 'Books'
+  "PGH003",
+  "PIE804",
+  "PLW2901",
+  "S101",   # Use of assert detected
+  "TRY003",
+]
+lint.per-file-ignores."apps/core/data_import/__init__.py" = [
+  "B905",
+]
+
+lint.mccabe.max-complexity = 21 # Recommended: 10
+lint.pylint.allow-magic-value-types = [
+  "bytes",
+  "float",
+  "int",
+  "str",
+]
+lint.pylint.max-args = 9 # Recommended: 5
+lint.pylint.max-bool-expr = 5 # Recommended: 5
+lint.pylint.max-branches = 24 # Recommended: 12
+lint.pylint.max-public-methods = 69 # Recommended: 20
+lint.pylint.max-returns = 13 # Recommended: 6
+lint.pylint.max-statements = 74 # Recommended: 50
+
+[tool.isort]
+known_first_party = [
+  "adminlog",
+  "agreements",
+  "agilixbuzz",
+  "analytics",
+  "api",
+  "atlas",
+  "authoring",
+  "badges",
+  "clever",
+  "comments",
+  "common",
+  "core",
+  "courseware",
+  "crosswalks",
+  "curatedcollections",
+  "curriculum",
+  "datatables",
+  "downloads",
+  "editor",
+  "endorsements",
+  "events",
+  "followers",
+  "geo",
+  "google_oauth",
+  "groups",
+  "hubs",
+  "imls",
+  "import_export",
+  "jesuit",
+  "landingpages",
+  "learningregistry",
+  "licenses",
+  "lti",
+  "lti1p3",
+  "maps",
+  "materials",
+  "moodle",
+  "myitems",
+  "news",
+  "newsletter",
+  "notes",
+  "organizations",
+  "partners",
+  "presentation",
+  "products",
+  "providers",
+  "rating",
+  "reports",
+  "resources",
+  "rubrics",
+  "saml",
+  "saveditems",
+  "search",
+  "sec",
+  "slider",
+  "standards",
+  "staticpages",
+  "stats",
+  "tags",
+  "translations",
+  "users",
+  "utils",
+  "uuids",
+  "videos",
+  "visitcounts",
+  "workflow",
+]
+line_length = 120
+profile = "django"
+skip = [
+  "apps",
+  "migrations",
+  "project/tenants/midoe/standards/align_widget_helper.py",
+]
+
+[tool.codespell]
+count = "True"
+ignore-words-list = "ans,anull,complies,followings,hist,nd,optin,ro,specifi,sur,te,vart,vill"
+skip = "apps/editor/static/editor/*,*/migrations/*,*.coffee,*.css,*.csv,*.js,*.json,*.map,*.pickle,*.po,*.scss,*.svg"
