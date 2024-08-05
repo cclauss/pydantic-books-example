@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import date
-from typing import Optional
 
 from pydantic import BaseModel, field_validator
 
@@ -44,7 +43,7 @@ class Book(BaseModel):
     source_records: list[SourceRecord]
     authors: list[Author]
     publishers: list[Publisher]
-    publish_date: Optional[date] = None
+    publish_date: date | None = None
     author: str
     publisher: str
 
