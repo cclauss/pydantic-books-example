@@ -12,7 +12,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.10
+    rev: v0.14.11
     hooks:  # Format before linting
       - id: ruff-format
       - id: ruff
